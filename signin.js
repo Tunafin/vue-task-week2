@@ -18,7 +18,6 @@ createApp({
 
       const api = 'https://vue3-course-api.hexschool.io/v2/admin/signin';
       axios.post(api, this.form).then((res) => {
-        console.log('success');
         const { token, expired } = res.data;
 
         // 將token與有效期限寫入cookie
