@@ -34,7 +34,7 @@
     <nav class="navbar navbar-dark bg-primary">
       <div class="container-fluid">
         <h1 class="navbar-brand mb-0 h1">後臺管理</h1>
-        <button v-on:click="logout()"
+        <button @click="logout"
                 class="btn btn-sm btn-outline-light"
                 type="button">登出</button>
       </div>
@@ -43,11 +43,10 @@
       <div class="row py-3">
         <div class="col-md-6">
           <h2>產品列表</h2>
-          <div v-if="products==null"
+          <div v-if="isWaitResponse"
                class="d-flex align-items-center">
             <div class="spinner-border text-secondary"
                  role="status">
-              <span class="visually-hidden">Loading...</span>
             </div>
             <span class="text-secondary px-2">載入中...</span>
           </div>
@@ -87,7 +86,7 @@
                     <span v-else>未啟用</span>
                   </td>
                   <td width="120">
-                    <button v-on:click="selectProduct(product)"
+                    <button @click="selectProduct(product)"
                             v-bind:disabled="!product.is_enabled"
                             type="button"
                             class="btn btn-primary">查看細節</button>
@@ -101,7 +100,7 @@
         <div class="col-md-6">
           <h2>單一產品細節</h2>
           <template v-if="tempProduct.title">
-            <button v-on:click="selectProduct({})"
+            <button @click="selectProduct({})"
                     type="button"
                     class="btn btn-secondary mb-1">取消選取</button>
             <div class="card mb-3">
